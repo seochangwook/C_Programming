@@ -7,34 +7,21 @@
 //
 
 #include <stdio.h>
+#include "testfunc.h"
 
 int main(void) {
-    int a;
-    int b;
-    char *name = "seochangwook";
+    printf("Main Start!!\n\n");
     
-    a = 10;
-    b = 20;
+    printMessageFunc();
     
-    printf("value is a : %d, b : %d\n", a, b);
-    printf("name is : %s\n", name);
+    printf("\n");
     
-    int input_data;
+    int a = 10;
+    int b = 20;
     
-    printf("Input Number: ");
-    scanf("%d", &input_data);
+    int result = sumFunc(a, b);
     
-    printf("Input Number is : %d\n", input_data);
-    
-    char input_name[50]; //문자열로 인식
-    
-    printf("Input Name: ");
-    scanf("%s", input_name);
-    
-    int size = strlen(input_name);
-    
-    printf("Input Name is : %s\n", input_name);
-    printf("Size: %d\n", size);
+    printf("%d + %d = %d\n", a, b, result);
     
     return 0;
 }
