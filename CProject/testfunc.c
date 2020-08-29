@@ -59,7 +59,7 @@ void printArrayPointer(int *array, int size){
 void printArrayTwo(int b[][5], int row, int col){
     printf("이차원 배열 출력: \n");
     
-    for(int i=-0; i<row; i++){
+    for(int i=0; i<row; i++){
         for(int j=0; j<col; j++){
             printf("%d ", b[i][j]);
         }
