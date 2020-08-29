@@ -38,6 +38,14 @@ int main(void) {
     
     printf("\n");
     
+    //배열의 이름은 배열의 시작주소 확인
+    //정수형 배열
+    int array[5] = {1, 2, 3, 4, 5};
+    
+    printArrayPointer(array, sizeof(array) / sizeof(int));
+    
+    printf("\n");
+    
     //문자형 배열
     char name[] = "Seo";
     

@@ -45,6 +45,17 @@ void arrayCopy(int dest[], int source[], int copySize, int arraySize){
     printf("\n");
 }
 
+void printArrayPointer(int *array, int size){
+    printf("(포인터)배열 크기: %d\n", size);
+    printf("(포인터)배열 출력: ");
+    
+    for(int i=0; i<size; i++){
+        printf("%d ", *(array+i));
+    }
+    
+    printf("\n");
+}
+
 void printArrayTwo(int b[][5], int row, int col){
     printf("이차원 배열 출력: \n");
     
