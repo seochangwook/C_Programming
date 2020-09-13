@@ -10,57 +10,78 @@
 #include "testfunc.h"
 
 int main(void) {
-    //정수형 배열
-    int a[5] = {1, 2, 3, 4, 5};
+    //포인터 변수 출력 (참조값, 주소값)
+    int value = 5;
+    int *value_pointer = &value;
     
-    printArray(a, sizeof(a) / sizeof(int));
+    printf("value : %d\n", value);
+    printf("pointer value : %d\n", *value_pointer); //역참조
+    printf("value address : %p\n", &value);
+    printf("pointer value address : %p\n", value_pointer);
+    
+    printf("----------------\n");
+    
+    //포인터 값 변경
+    int value_origin = 10;
+    int *value_origin_pointer = &value_origin;
+    
+    printf("value origin : %d\n", value_origin);
+    
+    *value_origin_pointer = 20;
+    
+    printf("value origin : %d\n", value_origin);
+    
+    printf("----------------\n");
+    
+    //Call by Value, Call By Reference (Swap)
+    int value_one = 10;
+    int value_two = 20;
+    
+    printf("* Call by Value\n");
+    
+    printf("<Swap before>\n");
+    
+    printf("value one : %d | %p\n", value_one, &value_one);
+    printf("value two : %d | %p\n", value_two, &value_two);
+    
+    swap_value(value_one, value_two);
+    
+    printf("<Swap after>\n");
+    
+    printf("value one : %d\n", value_one);
+    printf("value two : %d\n", value_two);
     
     printf("\n");
     
-    //배열값 변환
-    int index;
-    int changeNum;
+    printf("* Call by Reference\n");
     
-    printf("변환할 배열의 위치(인덱스)를 입력하세요: ");
-    scanf("%d", &index);
+    printf("<Swap before>\n");
     
-    printf("변환할 배열의 값을 입력하세요: ");
-    scanf("%d", &changeNum);
+    printf("value one : %d | %p\n", value_one, &value_one);
+    printf("value two : %d | %p\n", value_two, &value_two);
     
-    changeNumArray(a, sizeof(a) / sizeof(int), index, changeNum);
+    swap_reference(&value_one, &value_two);
     
-    printf("\n");
+    printf("<Swap after>\n");
     
-    //배열복사
-    int dest[5];
+    printf("value one : %d\n", value_one);
+    printf("value two : %d\n", value_two);
     
-    arrayCopy(dest, a, (sizeof(a) / sizeof(int))*sizeof(int), sizeof(a) / sizeof(int));
+    printf("----------------\n");
     
-    printf("\n");
+    //이중포인터
+    int origin_value = 10;
+    printf("origin_value : %d | %p\n", origin_value, &origin_value);
     
-    //배열의 이름은 배열의 시작주소 확인
-    //정수형 배열
-    int array[5] = {1, 2, 3, 4, 5};
+    int *one_pointer = &origin_value;
+    printf("one_pointer : %d | %p\n", *one_pointer, one_pointer);
     
-    printArrayPointer(array, sizeof(array) / sizeof(int));
+    int **two_pointer = &one_pointer;
+    printf("two_pointer : %d | %p\n", **two_pointer, *two_pointer);
     
-    printf("\n");
+    **two_pointer = 20;
     
-    //문자형 배열
-    char name[] = "Seo";
-    
-    printf("문자열 출력 : %s\n", name);
-    printf("문자열 길이 : %d\n", strlen(name));
-    
-    printf("\n");
-    
-    //이차원 배열
-    int b[2][5] = {
-        {1,2,3,4,5},
-        {6,7,8,9,10}
-    };
-    
-    printArrayTwo(b, 2, 5);
+    printf("origin_value: %d\n", origin_value);
     
     return 0;
 }

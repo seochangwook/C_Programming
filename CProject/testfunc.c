@@ -8,64 +8,28 @@
 
 #include "testfunc.h"
 
-void printArray(int a[], int size){
-    printf("배열 크기: %d\n", size);
-    printf("배열 출력: ");
+void swap_value(int swap_value_one, int swap_value_two){
+    int temp; //교환을 위한 임시저장변수
     
-    for(int i=0; i<size; i++){
-        printf("%d ", a[i]);
-    }
+    temp = swap_value_one;
+    swap_value_one = swap_value_two;
+    swap_value_two = temp;
     
-    printf("\n");
+    printf("(Swap 안)\n");
+    
+    printf("swap_value_one : %d | %p\n", swap_value_one, &swap_value_one);
+    printf("swap_value_two : %d | %p\n", swap_value_two, &swap_value_two);
 }
 
-void changeNumArray(int a[], int size, int index, int changeNum){
-    a[index-1] = changeNum;
-    
-    printf("배열 출력: ");
-    
-    for(int i=0; i<size; i++){
-        printf("%d ", a[i]);
-    }
-    
-    printf("\n");
-}
-
-void arrayCopy(int dest[], int source[], int copySize, int arraySize){
-    printf("배열 복사...\n");
-    
-    memcpy(dest, source, copySize);
-    
-    printf("배열출력 : ");
-    
-    for(int i=0; i<arraySize; i++){
-        printf("%d ", dest[i]);
-    }
-    
-    printf("\n");
-}
-
-void printArrayPointer(int *array, int size){
-    printf("(포인터)배열 크기: %d\n", size);
-    printf("(포인터)배열 출력: ");
-    
-    for(int i=0; i<size; i++){
-        printf("%d ", *(array+i));
-    }
-    
-    printf("\n");
-}
-
-void printArrayTwo(int b[][5], int row, int col){
-    printf("이차원 배열 출력: \n");
-    
-    for(int i=0; i<row; i++){
-        for(int j=0; j<col; j++){
-            printf("%d ", b[i][j]);
-        }
-        
-        printf("\n");
-    }
-    
-    printf("\n");
+void swap_reference(int *swap_value_one, int *swap_value_two){
+    int temp; //교환을 위한 임시저장변수
+       
+    temp = *swap_value_one;
+    *swap_value_one = *swap_value_two;
+    *swap_value_two = temp;
+       
+    printf("(Swap 안)\n");
+       
+    printf("swap_value_one : %d | %p\n", *swap_value_one, swap_value_one);
+    printf("swap_value_two : %d | %p\n", *swap_value_two, swap_value_two);
 }

@@ -10,12 +10,8 @@
 #define testfunc_h
 
 #include <stdio.h>
-#include <string.h>
 
-void printArray(int a[], int size); //배열출력
-void changeNumArray(int a[], int size, int index, int changeNum); //배열 값 변경
-void arrayCopy(int dest[], int source[], int copySize, int arraySize); //배열 복사
-void printArrayPointer(int *array, int size); //배열의 이름은 배열의 시작주소 확인
-void printArrayTwo(int b[][5], int row, int col); //이차원 배열출력
+void swap_value(int swap_value_one, int swap_value_two);
+void swap_reference(int *swap_value_one, int *swap_value_two);
 
 #endif /* testfunc_h */
