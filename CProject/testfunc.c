@@ -8,28 +8,56 @@
 
 #include "testfunc.h"
 
-void swap_value(int swap_value_one, int swap_value_two){
-    int temp; //교환을 위한 임시저장변수
-    
-    temp = swap_value_one;
-    swap_value_one = swap_value_two;
-    swap_value_two = temp;
-    
-    printf("(Swap 안)\n");
-    
-    printf("swap_value_one : %d | %p\n", swap_value_one, &swap_value_one);
-    printf("swap_value_two : %d | %p\n", swap_value_two, &swap_value_two);
+void printInfo_Building(Building building){
+    printf("building Name: %s\n", building.buildingName);
+    printf("building History: %d\n", building.history);
+    printf("building UpFloor: %d\n", building.upfloor);
+    printf("building DownFloor: %d\n", building.downfloor);
 }
 
-void swap_reference(int *swap_value_one, int *swap_value_two){
-    int temp; //교환을 위한 임시저장변수
-       
-    temp = *swap_value_one;
-    *swap_value_one = *swap_value_two;
-    *swap_value_two = temp;
-       
-    printf("(Swap 안)\n");
-       
-    printf("swap_value_one : %d | %p\n", *swap_value_one, swap_value_one);
-    printf("swap_value_two : %d | %p\n", *swap_value_two, swap_value_two);
+void printInfo_Person(Person *person){
+    printf("name: %s\n", person->name);
+    printf("age: %d\n", person->age);
+}
+
+void init_BookInfo(Book *book, int size){
+    //구조체 배열의 배열명(구조체 배열의 이름)은 구조체의 첫번째 요소의 주소(포인터)와 같다//
+    char bookName[50];
+    int page;
+    char bookAuthor[20];
+    
+    printf("<<< Input Book Info>>>\n");
+    
+    for(int i=0; i<size; i++){
+        printf("Input Book[%d] Name: ", (i+1));
+        scanf("%s", bookName);
+        
+        strcpy(book[i].name, bookName);
+        
+        printf("Input Book[%d] page: ", (i+1));
+        scanf("%d", &page);
+        
+        book[i].page = page;
+        
+        printf("Input book[%d] author: ", (i+1));
+        scanf("%s", bookAuthor);
+        
+        strcpy(book[i].author, bookAuthor);
+        
+        printf("\n");
+    }
+}
+
+void searchBook(Book *book, int size, char *searchAuthorName){
+    for(int i=0; i<size; i++){
+        if(strcmp(book[i].author, searchAuthorName) == 0){
+            printf("book Name: %s\n", book[i].name);
+            printf("book page: %d\n", book[i].page);
+            printf("book author: %s\n", book[i].author);
+            
+            break;
+        }
+    }
+    
+    printf("\n");
 }

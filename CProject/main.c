@@ -7,81 +7,68 @@
 //
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "testfunc.h"
 
 int main(void) {
-    //포인터 변수 출력 (참조값, 주소값)
-    int value = 5;
-    int *value_pointer = &value;
+    //1. 기본 구조체 선언
+    struct Computer computer;
     
-    printf("value : %d\n", value);
-    printf("pointer value : %d\n", *value_pointer); //역참조
-    printf("value address : %p\n", &value);
-    printf("pointer value address : %p\n", value_pointer);
+    strcpy(computer.modelName, "Apple Macbook");
+    computer.memory = 16;
+    computer.cpu = 64;
     
-    printf("----------------\n");
-    
-    //포인터 값 변경
-    int value_origin = 10;
-    int *value_origin_pointer = &value_origin;
-    
-    printf("value origin : %d\n", value_origin);
-    
-    *value_origin_pointer = 20;
-    
-    printf("value origin : %d\n", value_origin);
-    
-    printf("----------------\n");
-    
-    //Call by Value, Call By Reference (Swap)
-    int value_one = 10;
-    int value_two = 20;
-    
-    printf("* Call by Value\n");
-    
-    printf("<Swap before>\n");
-    
-    printf("value one : %d | %p\n", value_one, &value_one);
-    printf("value two : %d | %p\n", value_two, &value_two);
-    
-    swap_value(value_one, value_two);
-    
-    printf("<Swap after>\n");
-    
-    printf("value one : %d\n", value_one);
-    printf("value two : %d\n", value_two);
+    printf("computer model Name: %s\n", computer.modelName);
+    printf("computer memory: %d\n", computer.memory);
+    printf("computer cpu: %d\n", computer.cpu);
     
     printf("\n");
     
-    printf("* Call by Reference\n");
+    //2. 함축 구조체 선언
+    Building building;
     
-    printf("<Swap before>\n");
+    strcpy(building.buildingName, "Lotte World Tower");
+    building.history = 20161222;
+    building.upfloor = 123;
+    building.downfloor = 5;
     
-    printf("value one : %d | %p\n", value_one, &value_one);
-    printf("value two : %d | %p\n", value_two, &value_two);
+    printInfo_Building(building);
     
-    swap_reference(&value_one, &value_two);
+    printf("\n");
     
-    printf("<Swap after>\n");
+    //3. 포인터 구조체 사용
+    Person *person = malloc(sizeof(Person)); //구조체를 사용하기 위한 동적 메모리 할당//
     
-    printf("value one : %d\n", value_one);
-    printf("value two : %d\n", value_two);
+    strcpy(person->name, "SeoChangWook");
+    person->age = 29;
     
-    printf("----------------\n");
+    printInfo_Person(person);
     
-    //이중포인터
-    int origin_value = 10;
-    printf("origin_value : %d | %p\n", origin_value, &origin_value);
+    free(person); //동적 메모리 해제(반납)//
     
-    int *one_pointer = &origin_value;
-    printf("one_pointer : %d | %p\n", *one_pointer, one_pointer);
+    printf("\n");
     
-    int **two_pointer = &one_pointer;
-    printf("two_pointer : %d | %p\n", **two_pointer, *two_pointer);
+    //4. 구조체 배열
+    char searchAuthorName[20];
+    Book book[3];
     
-    **two_pointer = 20;
+    init_BookInfo(book, 3);
     
-    printf("origin_value: %d\n", origin_value);
+    printf("<<<Info Book>>>\n");
+    
+    for(int i=0; i<3; i++){
+        printf("book Name: %s\n", book[i].name);
+        printf("book page: %d\n", book[i].page);
+        printf("book Author: %s\n", book[i].author);
+        
+        printf("\n");
+    }
+    
+    printf("==> Search Author: ");
+    scanf("%s", searchAuthorName);
+    
+    searchBook(book, 3, searchAuthorName); //책 검색//
     
     return 0;
 }
